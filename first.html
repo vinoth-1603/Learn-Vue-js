@@ -8,15 +8,20 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{ message }}</h1>
+        <h1>Course name: {{ course }}</h1>
+        <h2>Duration: {{ duration }}</h2>
+        <h2>Fees: {{ fees }}</h2>
     </div>
 
     <script>
         const { createApp } = Vue
         createApp({
             setup(){
+                let course = "Vue Js"
+                let duration = "30 Days"
+                let fees = 10000
                 return{
-                    message : "Learn Vue"
+                    course, duration, fees
                 }
             }
         }).mount("#app")
