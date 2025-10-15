@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<style>
+.one{
+        border: 2px;
+        padding: 5px;
+        background-color: aquamarine;
+        width: 100px;
+    }
+    #cat{
+        border: 2px;
+        padding: 20px;
+        width: 100px;
+        height: 20px;
+        color: aliceblue;
+       
+    }
+    
+    </style>
+<body>
+    <h1>Try v-bind</h1>
+    <div id="app">
+        <img v-bind:src="image" alt="burger" height=200px width="200px"><br>
+        <div v-bind:class="vueClass">
+        <a v-bind:href="url" target="_blank">Click Here</a>
+         </div>
+        
+    <div  id="cat"   v-bind:style="{backgroundColor:isCorrect ? 'blue' : 'red'  }" >Tamil Nadu</div>
+
+    <div id="dog" v-bind:style="{fontSize: size}">Text Size</div>
+    
+    </div>
+    
+    <script>
+        const { createApp } = Vue
+        createApp({
+            setup(){
+                let image = "burger.jpg"
+                let url="https://www.zomato.com/"
+                return{
+                    image,
+                    url,
+                    vueClass:"one",
+                    isCorrect : true,
+                    size: "50px"
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
