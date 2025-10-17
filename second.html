@@ -6,52 +6,68 @@
     <title>Vue</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<style>
-.one{
-        border: 2px;
-        padding: 5px;
-        background-color: aquamarine;
-        width: 100px;
-    }
-    #cat{
-        border: 2px;
-        padding: 20px;
-        width: 100px;
-        height: 20px;
-        color: aliceblue;
-       
-    }
-    
-    </style>
 <body>
-    <h1>Try v-bind</h1>
     <div id="app">
-        <img v-bind:src="image" alt="burger" height=200px width="200px"><br>
-        <div v-bind:class="vueClass">
-        <a v-bind:href="url" target="_blank">Click Here</a>
-         </div>
+        <ol>
+        <li><p>Binding Text:</p></li>
+        <p v-text="name"></p>
         
-    <div  id="cat"   v-bind:style="{backgroundColor:isCorrect ? 'blue' : 'red'  }" >Tamil Nadu</div>
+        <li><p>Binding html:</p></li>
+        <p v-html="name1"></p>
 
-    <div id="dog" v-bind:style="{fontSize: size}">Text Size</div>
-    
+        <li><p>Binding Classes:</p></li>
+        <p v-bind:class="name2">I Love India</p>   
+
+        <li><p>Conditional Binding class:</p></li>
+        <p v-bind:class="isDanger?'two':'two1'">Danger</p>
+
+       <li><p>Array bind class:</p></li>
+        <p v-bind:class="['one','cat']">Multiple Classes</p>
+
+        <li><p>object bind class:</p></li>
+        <p v-bind:class="{one: true,cat:true}">object class</p>
+
+        <li><p>Obeject Style Binding:</p></li>
+        <p v-bind:style="styleObject">Object Style Binding</p>
+
+        <li><p>Array Style Binding:</p></li>
+        <p v-bind:style="[styleObject,styleObject1]">Array Style Binding</p>
+        </ol>
     </div>
-    
     <script>
         const { createApp } = Vue
         createApp({
             setup(){
-                let image = "burger.jpg"
-                let url="https://www.zomato.com/"
                 return{
-                    image,
-                    url,
-                    vueClass:"one",
-                    isCorrect : true,
-                    size: "50px"
+                    name: "Hello VinothKumar",
+                    name1:"<b>Welcome Vue</b>",
+                    name2:"one",
+                    isDanger: true,
+                    name3:"cat",
+                    styleObject:{
+                        color: 'red', fontSize: '30px'
+                    },
+                    styleObject1:{
+                        backgroundColor:'yellow',border: '5px', border: 'solid'
+                    }
                 }
             }
         }).mount("#app")
     </script>
+    <style>
+        .one{
+           color: orange;
+           
+        }
+        .two{
+            color: red;
+        }
+        .two1{
+            color: green;
+        }
+        .cat{
+            font-style: italic;
+        }
+    </style>
 </body>
 </html>
