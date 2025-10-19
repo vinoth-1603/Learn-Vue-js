@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+        <li><p>Conditional Rendering:</p></li>
+        <p v-if="num==0">The number is Zero</p>
+        <p v-else-if="num>0">The number is Positive</p>
+        <p v-else-if="num<0">The number is Negative</p>
+        <p v-else>Not a number</p>
+
+        <li><p>v-show:</p></li>
+        <p v-show="show">Using v-show</p>
+
+        <li><p>List Rendering:</p></li>
+        <ol>
+            <li><p>Array of strings</p></li>
+            <p v-for="name in names">{{ name }}</p>
+
+            <li><p>Array of objects</p></li>
+             <p v-for="name in fullnames">{{name.fname}} {{name.lname}}</p>
+
+             <li><p>Array of arrays</p></li>
+             <div v-for="actor in actors">
+             <p>{{actor.name}}</p>
+             <p v-for="movie in actor.movies">{{movie}}</p>
+             </div>
+        </ol>
+
+        </ol>
+    </div>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            setup(){
+                return{
+                    num : 0,
+                    show: true,
+                    names:['Ajith', 'Vijay', 'Vinoth'],
+                    fullnames:[
+                        {fname:"Ajith",lname:"kumar"},
+                        {fname:"Vijay",lname:"kumar"},
+                        {fname:"Vinoth",lname:"kumar"}
+                    ],
+                    actors:[
+                        {
+                            name: '@Vijay',
+                            movies: ['Bigil','Goat']
+                        },
+                        {
+                            name: '@Ajith',
+                            movies: ['Billa','Veeram']
+                        },
+                        {
+                            name: '@Kamal',
+                            movies: ['Vickram','Thug Life']
+                        }
+                    ]
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
